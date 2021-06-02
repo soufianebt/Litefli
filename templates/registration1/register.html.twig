@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Litefli | S'inscrire{% endblock %}
+{% block css %}
+<style>
+    .col-md-5 {
+    position: absolute;
+    top: 100px;
+    left: 370px;
+    width: 45%;
+    background-color: white;
+}
+
+.col-md-5 {
+    position: absolute;
+    top: 100px;
+    left: 370px;
+    width: 45%;
+    background-color: white;
+}
+
+.btn.btn-primary.btn-sm.btn-block {
+    background-color: #F7A9AF;
+    color: white;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.createclass {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+
+}
+
+.col-md-5 {
+    position: absolute;
+    top: 100px;
+    left: 370px;
+    width: 45%;
+    background-color: white;
+}
+
+.mt-8 {
+    margin-bottom: 45px;
+}
+
+.text {
+    color: #777;
+    font-size: 15px;
+    text-align: center;
+    font-family: Poppins;
+}
+
+</style>
+{% endblock %}
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+<div class="row">
+    <div class="col-md-5">
+            <h3 class="mt-8">Inscrivez-vous et créer votre compte</h3>
+            {% form_theme registrationForm 'bootstrap_4_layout.html.twig'%}
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.nomComplet, {
+                    label: 'Nom complet'
+                }) }}
+                {{ form_row(registrationForm.codePostal, {
+                    label: 'Code postal'
+                }) }}
+                {{ form_row(registrationForm.username, {
+                    label: "Nom d'utilisateur"
+                }) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Mot de passe'
+                }) }}
+                {{ form_row(registrationForm.typeCompte, {
+                    label: 'Type de compte'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms, {
+                    label: "J'accepte les conditions générales"
+                }) }}
+
+                <button type="submit" class="btn btn-primary  btn-sm btn-block">Valider</button>
+                <h5 class="text">Pas de compte ?<a classe="text" href="{{ path('app_login') }}">Inscrivez-vous</a></h5>
+            {{ form_end(registrationForm) }}
+    </div>
+    
+</div>
+
+{% endblock %}

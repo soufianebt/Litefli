@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Litefli | Validation des comptes {% endblock %}
+
+{% block css %}
+<style>
+#customers {
+  padding-top: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #F6AAAF;
+  color: white;
+}
+.button {
+
+  border: none;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 40px;
+  width: 20%;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+.plusinfo{border-radius: 10px;   border:solid 1px #E75737;background-color:#ffffff;/* Green */}
+.button2 {border-radius: 10px;  background-color: #4CAF50; /* Green */}
+.refuser{background-color:#FFffff}
+
+.refuser:hover{
+  background-color: #ff0000;
+}
+.plusinfo:hover{
+  background-color: #E75737;
+}
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<div style="padding-top:150px;">
+<table id="customers" >
+  <tr>
+    <th colspan=5 >Les informations des parents</th>
+
+
+
+  </tr>
+
+  <tr>
+
+    <th>Nom complete de bebe</th>
+
+    <th>Date de naissance de bebe</th>
+    <th>Code postal</th>
+    <th>Nom complete de tuteur</th>
+    <th>Id tuteur</th>
+
+
+  </tr>
+  <tr>
+    {% if tuteur is defined %}
+    <td>{{tuteur.nomCompletBebe}} </td>
+    <td>{{tuteur.dateNaissance|date("m/d/Y")}}</td>
+    <td>{{tuteur.codePostal}}</td>
+    <td>{{tuteur.nomComplet}}</td>
+    <td>{{tuteur.id}}</td>
+    {% else %}
+    <td>Some problems apparaied</td>
+    {% endif %}
+
+
+  </tr>
+
+
+
+
+
+</table>
+
+<form action="/valide/traiter" method="GET">
+{% if tuteur.validation == 0 %}
+
+<button type="submit" class="button button1" style="border-radius: 10px;margin-left:20%;margin-top:100px;background-color:#4CAF50" name="cvalider" value={{tuteur.id}}>Valider le docier</button>
+<button  class="button button1 plusinfo" name="ccontacter" value={{tuteur.id}}>{{tuteur.email}}</button>
+<button type="submit" class="button button1 refuser" style="border-radius: 10px;border:solid 1px #ff0000;" name="csupprimer" value={{tuteur.id}}>Supprimer le dossier</button>
+{% else %}
+<button type="submit" class="button button1" style="border-radius: 10px;margin-left:20%;margin-top:100px;background-color:#4CAF50" name="cunvalide" value={{tuteur.id}}>Le docier est valider <span>&#10003;</span></button>
+<button  class="button button1 plusinfo" name="ccontacter" value={{tuteur.id}}>{{tuteur.email}}</button>
+<button type="submit" class="button button1 refuser" style="border-radius: 10px;border:solid 1px #ff0000;" name="csupprimer" value={{tuteur.id}}>Supprimer le dossier <span>&#9747;</span> </button>
+{% endif %}
+</form>
+</div>
+{% endblock %}

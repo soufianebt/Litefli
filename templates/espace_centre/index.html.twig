@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Litefli | Espace Centre Médical {% endblock %}
+
+{% block css %}
+<style>
+    .carousel-caption p {
+    display: inline-block;
+    vertical-align: top;
+    margin: 20px;
+}
+.carousel-caption a {
+    margin-bottom: -200px;
+    width: 350px;
+    height: 50px;
+    text-decoration: none;
+}
+
+
+
+</style>
+{% endblock %}
+{% block body %}
+    <div class="">
+                    <div class="banner" style="background-image:  linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/img/backgroundCentre.jpeg);">
+    <div class="carousel-caption">
+        <h2 >Bienvenue sur votre Espace <span>Centre Médical</span></h2>
+        <p><a href="{{ path('medcin_index') }}">Gérer les comptes</a></p>
+        <p><a href="{{ path('consulte_accounts') }}">Valider les comptes</a></p>
+    </div>
+
+{% endblock %}

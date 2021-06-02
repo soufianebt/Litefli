@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medcin{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/css/tablemed.css">
+{% endblock %}  
+
+{% block body %}
+<div class="row">
+  <div class="col-md-5">
+    <hr>
+    <div class="card card-body">
+    <a class="btn btn-primary  btn-sm btn-block" href="{{ path('medcin_index') }}">Revenir à la liste des medcins</a>
+      <table class="table table-sm">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ medcin.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ medcin.nomComplet }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ medcin.username }}</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td>{{ medcin.codePostal }}</td>
+            </tr>
+            <tr>
+                <th><a class="btn btn-warning" href="{{ path('medcin_edit', {'id': medcin.id}) }}">Modifier</a></th>
+                <th><a class="btn btn-warning" href="{{ path('medcin_delete', {'id': medcin.id}) }}">Supprimer</th>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+</div>
+</div>    
+</div>
+    
+
+    
+
+    
+{% endblock %}

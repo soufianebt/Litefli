@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendezvous index{% endblock %}
+{% block css %}
+        <style>
+          .col-md-5{
+    position: absolute;
+    top: 150px;
+    left:250px;
+    width: 70%;
+    background-color: white;
+}
+.col-md-5{
+    position: absolute;
+    top: 150px;
+    left:250px;
+    width: 70%;
+    background-color: white;
+}
+a.btn.btn-primary.btn-sm.btn-block{
+    background-color: #F7A9AF;
+    color: white;
+    font-size: 20px;
+}
+.createclass{
+    position: absolute;
+    top: 20%;
+    left:40%;
+    
+}
+          .col-md-5{
+  position: absolute;
+  top: 150px;
+  left:250px;
+  width: 70%;
+  background-color: white;
+}
+        </style>
+    {% endblock %}  
+{% block body %}
+  <br>
+
+<div class="row">
+  <div class="col-md-5">
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary  btn-sm btn-block" href="#">Gestion des rendez-vous</a>
+      <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Nom de parent</th>
+                <th>nom de bebe</th>
+                <th>date de naissance</th>
+                <th>code postale</th>
+                <th>Affectation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for Tuture in Tutures %}
+            <tr>
+
+                <td>{{ Tuture.username }}</td>
+                <td>{{ Tuture.NomComplet }}</td>
+{#                <td>{{ rendezvou.RendezvousAT ? rendezvou.RendezvousAT|date('Y-m-d') : '' }}</td>#}
+                <td>{{ Tuture.dateNaissance |date('Y-m-d') }}</td>
+                <td>{{ Tuture.codePostal }}</td>
+
+                <td>
+                    <form mthod="POST" action="{{ path('rendezvous_new') }}">
+                        <input type="hidden" name="Tuteur_id" value="{{ Tuture.id }}">
+                        <button type="submit" >Ajouter rendez vous</button>
+                    </form>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+{% endblock %}

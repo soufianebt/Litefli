@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medcin index{% endblock %}
+{% block css %}
+        <style>
+          .col-md-5{
+    position: absolute;
+    top: 150px;
+    left:250px;
+    width: 70%;
+    background-color: white;
+}
+.col-md-5{
+    position: absolute;
+    top: 150px;
+    left:250px;
+    width: 70%;
+    background-color: white;
+}
+a.btn.btn-primary.btn-sm.btn-block{
+    background-color: #F7A9AF;
+    color: white;
+    font-size: 20px;
+}
+.createclass{
+    position: absolute;
+    top: 20%;
+    left:40%;
+    
+}
+          .col-md-5{
+  position: absolute;
+  top: 150px;
+  left:250px;
+  width: 70%;
+  background-color: white;
+}
+        </style>
+    {% endblock %}  
+
+{% block body %}
+   <br>
+
+<div class="row">
+  <div class="col-md-5">
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary  btn-sm btn-block" href="{{ path('medcin_new') }}">Ajouter un nouveau medcin</a>
+      <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom complet</th>
+                <th>Username</th>
+                <th>Code postal</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medcin in medcins %}
+            <tr>
+                <td>{{ medcin.id }}</td>
+                <td>{{ medcin.nomComplet }}</td>
+                <td>{{ medcin.username }}</td>
+                <td>{{ medcin.codePostal }}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('medcin_show', {'id': medcin.id}) }}">Afficher</a>
+                </td>
+                 <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('medcin_edit', {'id': medcin.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>    
+</div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+<style>
+.col-md-5 {
+    position: absolute;
+    top: 100px;
+    left: 470px;
+    width: 30%;
+    height: 80%;
+    background-color: white;
+}
+
+.col-md-5 {
+    position: absolute;
+    top: 100px;
+    left: 470px;
+    width: 30%;
+    height: 80%;
+    background-color: white;
+}
+
+.btn.btn-primary.btn-sm.btn-block {
+    background-color: #F7A9AF;
+    color: white;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+
+}
+
+.createclass {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+
+}
+
+.col-md-5 {
+    position: absolute;
+    top: 100px;
+    left: 470px;
+    width: 30%;
+    height: 80%;
+    background-color: white;
+}
+
+.mt-8 {
+    margin-bottom: 45px;
+}
+
+.text {
+    color: #777;
+    font-size: 15px;
+    text-align: center;
+    font-family: Poppins;
+}
+
+</style>
+{% endblock %}
+
+{% block title %}New Rendezvous{% endblock %}
+
+{% block body %}
+<div class="row">
+        <div class="col-md-5">
+            <h3 class="mt-8">Affecter un rendez-vous !</h3>
+            {% form_theme form 'bootstrap_4_layout.html.twig'%}
+ 
+       
+
+        {{ include('rendezvous/_form.html.twig') }}
+
+        <a class="btn btn-primary  btn-sm btn-block"  href="{{ path('rendezvous_index') }}">back to list</a>
+    </div>
+    </div>
+
+{% endblock %}

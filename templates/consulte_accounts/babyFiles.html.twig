@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block title %}Litefli | Baby list{% endblock %}
+
+{% block css %}
+<style>
+#customers {
+  margin-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:hover {background-color: #ddd;}
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #F6AAAF;
+  color: white;
+}
+.button {
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {border-radius: 10px;  background-color: #F6AAAF; /* Green */}
+.button2 {border-radius: 10px;  background-color: #4CAF50; /* Green */}
+</style>
+{% endblock %}
+{% block body %}
+
+
+<form method="get" action="/valide/search" style="padding-top:150px;">
+  <label for="site-search">Nom complete de bebe :</label>
+  <input type="search" id="site-search" name="sh"
+         aria-label="Search through site content">
+  <button class="button1" type="input" >Search</button>
+</form>
+
+
+<form method="GET" action="/valide/valideAccount">
+  {% if rempty is defined %}
+  <h1>{{rempty}} :( </h1>
+  {% endif %}
+  
+  <table id="customers">
+    <tr>
+      <th>Nom complete de bebe</th>
+
+      <th>Date de naissance de bebe</th>
+      <th>Nom complete de pere</th>
+
+      <th>Actions</th>
+    </tr>
+
+    {% if response is defined %}
+
+    {% for item in response %}
+      <tr>
+        <td>{{item.nomCompletBebe}} </td>
+        <td>{{item.dateNaissance|date("m/d/Y")}}</td>
+        <td>{{item.nomComplet}}</td>
+
+        {% if item.validation == 0 %}
+        <td><button type="submit" class="button button1" name="consulterid" value={{item.id}} >Consulter</button></td>
+        {% else %}
+        <td><button type="submit" class="button button2" name="consulterid" value={{item.id}}>deja valider</button></td>
+        {% endif %}
+      </tr>
+
+   {% endfor %}
+  {% else %}
+    <p>Sorry</p>
+  {% endif %}
+
+
+  </table>
+
+
+</form>
+
+{% endblock %}

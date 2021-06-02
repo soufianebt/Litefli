@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Litefli | Espace Parent {% endblock %}
+
+{% block css %}
+<style>
+    .carousel-caption p {
+    display: inline-block;
+    vertical-align: top;
+    margin: 20px;
+}
+.carousel-caption a {
+    margin-bottom: -200px;
+    width: 350px;
+    height: 50px;
+    text-decoration: none;
+}
+
+
+
+</style>
+{% endblock %}   
+{% block body %} 
+    
+    <div class="carousel-caption">
+        <h2 >Maîtriser le calendrier vaccinal de <span>votre bébé</span></h2> 
+        <p><a href="{{ path('app_tuteur_edit') }}">Demander un suivi pour votre bébé</a></p>
+    </div>
+
+{% endblock %}

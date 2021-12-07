@@ -1,4 +1,4 @@
-#Litefli
+Litefli
 **LITEFLI** is a platform dedicated to medical centers and Moroccan citizens to manage vaccination appointments for babies.
 
 **Technologies :** Symfony, PHP, Twig, HTML, CSS, MySQL.
